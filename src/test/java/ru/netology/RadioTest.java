@@ -4,14 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-
     Radio number = new Radio();
     Radio numberWithQuantityStation = new Radio(65);
     Radio volume = new Radio();
 
     @Test
     public void shouldNumberStationInMiddleValue() {
-
         number.setCurrentRadioStationNumber(6);
 
         int expected = 6;
@@ -22,7 +20,6 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationAboveMax() {
-
         number.setCurrentRadioStationNumber(15);
 
         int expected = 0;
@@ -33,7 +30,6 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationBelowMin() {
-
         number.setCurrentRadioStationNumber(-3);
 
         int expected = 0;
@@ -44,7 +40,6 @@ public class RadioTest {
 
     @Test
     public void shouldSoundVolumeBelowMin() {
-
         volume.setCurrentSoundVolume(-100);
 
         int expected = 0;
@@ -55,7 +50,6 @@ public class RadioTest {
 
     @Test
     public void shouldSoundVolumeAboveMax() {
-
         volume.setCurrentSoundVolume(101);
 
         int expected = 0;
@@ -66,7 +60,6 @@ public class RadioTest {
 
     @Test
     public void shouldSoundVolumeInMiddleValues() {
-
         volume.setCurrentSoundVolume(50);
 
         int expected = 50;
@@ -77,7 +70,6 @@ public class RadioTest {
 
     @Test
     public void shouldNextNumberStationInMiddleValues() {
-
         number.setCurrentRadioStationNumber(5);
 
         number.next();
@@ -90,7 +82,6 @@ public class RadioTest {
 
     @Test
     public void shouldNextNumberStationMaxValues() {
-
         number.setCurrentRadioStationNumber(10);
 
         number.next();
@@ -103,7 +94,6 @@ public class RadioTest {
 
     @Test
     public void shouldPrevtNumberStationInMiddleValues() {
-
         number.setCurrentRadioStationNumber(5);
 
         number.prev();
@@ -116,7 +106,6 @@ public class RadioTest {
 
     @Test
     public void shouldPrevtNumberStationMinValues() {
-
         number.setCurrentRadioStationNumber(0);
 
         number.prev();
@@ -129,7 +118,6 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseSoundInMiddleValues() {
-
         volume.setCurrentSoundVolume(50);
 
         volume.increaseSound();
@@ -142,7 +130,6 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseSoundMaxValues() {
-
         volume.setCurrentSoundVolume(100);
 
         volume.increaseSound();
@@ -155,7 +142,6 @@ public class RadioTest {
 
     @Test
     public void shouldReducingSoundLevelInMiddleValues() {
-
         volume.setCurrentSoundVolume(50);
 
         volume.reducingSoundLevel();
@@ -168,7 +154,6 @@ public class RadioTest {
 
     @Test
     public void shouldReducingSoundLevelMinValues() {
-
         volume.setCurrentSoundVolume(0);
 
         volume.reducingSoundLevel();
@@ -181,7 +166,6 @@ public class RadioTest {
 
     @Test
     public void shouldMaxNumberStation() {
-
         int expected = 10;
         int actual = number.getMaxNumberRadioStation();
 
@@ -190,7 +174,6 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationInMiddleValueWithQuantityStation() {
-
         numberWithQuantityStation.setCurrentRadioStationNumber(20);
 
         int expected = 20;
@@ -201,7 +184,6 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationAboveMaxWithQuantityStation() {
-
         numberWithQuantityStation.setCurrentRadioStationNumber(90);
 
         int expected = 0;
@@ -212,7 +194,6 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationBelowMinWithQuantityStation() {
-
         numberWithQuantityStation.setCurrentRadioStationNumber(-5);
 
         int expected = 0;
@@ -223,7 +204,6 @@ public class RadioTest {
 
     @Test
     public void shouldNextNumberStationInMiddleValuesWithQuantityStation() {
-
         numberWithQuantityStation.setCurrentRadioStationNumber(50);
 
         numberWithQuantityStation.next();
@@ -236,7 +216,6 @@ public class RadioTest {
 
     @Test
     public void shouldNextNumberStationMaxValuesWithQuantityStation() {
-
         numberWithQuantityStation.setCurrentRadioStationNumber(64);
 
         numberWithQuantityStation.next();
@@ -248,8 +227,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldPrevtNumberStationInMiddleValuesWithQuantityStation() {
-
+    public void shouldPrevNumberStationInMiddleValuesWithQuantityStation() {
         numberWithQuantityStation.setCurrentRadioStationNumber(6);
 
         numberWithQuantityStation.prev();
@@ -261,8 +239,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldPrevtNumberStationMinValuesWithQuantityStation() {
-
+    public void shouldPrevNumberStationMinValuesWithQuantityStation() {
         numberWithQuantityStation.setCurrentRadioStationNumber(0);
 
         numberWithQuantityStation.prev();
