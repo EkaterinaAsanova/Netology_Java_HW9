@@ -4,14 +4,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    Radio number = new Radio();
+    Radio numberWithQuantityStation = new Radio(65);
+    Radio volume = new Radio();
 
     @Test
-    public void shouldNumberStationInMiddleValues() {
-        Radio number = new Radio();
+    public void shouldNumberStationInMiddleValue() {
+        number.setCurrentRadioStationNumber(6);
 
-        number.setCurrentRadioStationNumber(7);
-
-        int expected = 7;
+        int expected = 6;
         int actual = number.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
@@ -19,9 +20,7 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationAboveMax() {
-        Radio number = new Radio();
-
-        number.setCurrentRadioStationNumber(11);
+        number.setCurrentRadioStationNumber(15);
 
         int expected = 0;
         int actual = number.getCurrentRadioStationNumber();
@@ -31,8 +30,6 @@ public class RadioTest {
 
     @Test
     public void shouldNumberStationBelowMin() {
-        Radio number = new Radio();
-
         number.setCurrentRadioStationNumber(-3);
 
         int expected = 0;
@@ -43,8 +40,6 @@ public class RadioTest {
 
     @Test
     public void shouldSoundVolumeBelowMin() {
-        Radio volume = new Radio();
-
         volume.setCurrentSoundVolume(-100);
 
         int expected = 0;
@@ -55,8 +50,6 @@ public class RadioTest {
 
     @Test
     public void shouldSoundVolumeAboveMax() {
-        Radio volume = new Radio();
-
         volume.setCurrentSoundVolume(101);
 
         int expected = 0;
@@ -67,8 +60,6 @@ public class RadioTest {
 
     @Test
     public void shouldSoundVolumeInMiddleValues() {
-        Radio volume = new Radio();
-
         volume.setCurrentSoundVolume(50);
 
         int expected = 50;
@@ -79,7 +70,6 @@ public class RadioTest {
 
     @Test
     public void shouldNextNumberStationInMiddleValues() {
-        Radio number = new Radio();
         number.setCurrentRadioStationNumber(5);
 
         number.next();
@@ -92,8 +82,7 @@ public class RadioTest {
 
     @Test
     public void shouldNextNumberStationMaxValues() {
-        Radio number = new Radio();
-        number.setCurrentRadioStationNumber(9);
+        number.setCurrentRadioStationNumber(10);
 
         number.next();
 
@@ -105,7 +94,6 @@ public class RadioTest {
 
     @Test
     public void shouldPrevtNumberStationInMiddleValues() {
-        Radio number = new Radio();
         number.setCurrentRadioStationNumber(5);
 
         number.prev();
@@ -118,12 +106,11 @@ public class RadioTest {
 
     @Test
     public void shouldPrevtNumberStationMinValues() {
-        Radio number = new Radio();
         number.setCurrentRadioStationNumber(0);
 
         number.prev();
 
-        int expected = 9;
+        int expected = 10;
         int actual = number.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
@@ -131,7 +118,6 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseSoundInMiddleValues() {
-        Radio volume = new Radio();
         volume.setCurrentSoundVolume(50);
 
         volume.increaseSound();
@@ -144,7 +130,6 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseSoundMaxValues() {
-        Radio volume = new Radio();
         volume.setCurrentSoundVolume(100);
 
         volume.increaseSound();
@@ -157,7 +142,6 @@ public class RadioTest {
 
     @Test
     public void shouldReducingSoundLevelInMiddleValues() {
-        Radio volume = new Radio();
         volume.setCurrentSoundVolume(50);
 
         volume.reducingSoundLevel();
@@ -170,13 +154,98 @@ public class RadioTest {
 
     @Test
     public void shouldReducingSoundLevelMinValues() {
-        Radio volume = new Radio();
         volume.setCurrentSoundVolume(0);
 
         volume.reducingSoundLevel();
 
         int expected = 0;
         int actual = volume.getCurrentSoundVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMaxNumberStation() {
+        int expected = 10;
+        int actual = number.getMaxNumberRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNumberStationInMiddleValueWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(20);
+
+        int expected = 20;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNumberStationAboveMaxWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(90);
+
+        int expected = 0;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNumberStationBelowMinWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(-5);
+
+        int expected = 0;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNextNumberStationInMiddleValuesWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(50);
+
+        numberWithQuantityStation.next();
+
+        int expected = 51;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNextNumberStationMaxValuesWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(64);
+
+        numberWithQuantityStation.next();
+
+        int expected = 0;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPrevNumberStationInMiddleValuesWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(6);
+
+        numberWithQuantityStation.prev();
+
+        int expected = 5;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPrevNumberStationMinValuesWithQuantityStation() {
+        numberWithQuantityStation.setCurrentRadioStationNumber(0);
+
+        numberWithQuantityStation.prev();
+
+        int expected = 64;
+        int actual = numberWithQuantityStation.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
     }
