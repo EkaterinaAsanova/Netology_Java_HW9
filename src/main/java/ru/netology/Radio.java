@@ -2,35 +2,53 @@ package ru.netology;
 
 
 public class Radio {
+    private int maxNumberRadioStation;
+    private int minNumberRadioStation = 0;
+    private int maxSoundVolume = 100;
+    private int minSoundVolume = 0;
     private int currentRadioStationNumber;
     private int currentSoundVolume;
+
+    public Radio(int quantityStation) {
+        maxNumberRadioStation = quantityStation - 1;
+    }
+
+    public Radio() {
+        maxNumberRadioStation = 10;
+    }
 
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
 
+    public int getMaxNumberRadioStation() {
+        return maxNumberRadioStation;
+    }
+
     public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
-        if (newCurrentRadioStationNumber > 9) {
+        if (newCurrentRadioStationNumber > maxNumberRadioStation) {
             return;
         }
-        if (newCurrentRadioStationNumber < 0) {
+        if (newCurrentRadioStationNumber < minNumberRadioStation) {
             return;
         }
         currentRadioStationNumber = newCurrentRadioStationNumber;
     }
 
     public void next() {
-        if (currentRadioStationNumber < 9)
+        if (currentRadioStationNumber < maxNumberRadioStation) {
             currentRadioStationNumber = currentRadioStationNumber + 1;
-        else
-            currentRadioStationNumber = 0;
+        } else {
+            currentRadioStationNumber = minNumberRadioStation;
+        }
     }
 
     public void prev() {
-        if (currentRadioStationNumber > 0)
+        if (currentRadioStationNumber > minNumberRadioStation) {
             currentRadioStationNumber = currentRadioStationNumber - 1;
-        else
-            currentRadioStationNumber = 9;
+        } else {
+            currentRadioStationNumber = maxNumberRadioStation;
+        }
     }
 
     public int getCurrentSoundVolume() {
@@ -38,22 +56,24 @@ public class Radio {
     }
 
     public void setCurrentSoundVolume(int newCurrentSoundVolume) {
-        if (newCurrentSoundVolume < 0) {
+        if (newCurrentSoundVolume < minSoundVolume) {
             return;
         }
-        if (newCurrentSoundVolume > 100) {
+        if (newCurrentSoundVolume > maxSoundVolume) {
             return;
         }
         currentSoundVolume = newCurrentSoundVolume;
     }
 
     public void increaseSound() {
-        if (currentSoundVolume < 100)
+        if (currentSoundVolume < maxSoundVolume) {
             currentSoundVolume = currentSoundVolume + 1;
+        }
     }
 
     public void reducingSoundLevel() {
-        if (currentSoundVolume > 0)
+        if (currentSoundVolume > minSoundVolume) {
             currentSoundVolume = currentSoundVolume - 1;
+        }
     }
 }
